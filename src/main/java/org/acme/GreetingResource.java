@@ -29,12 +29,6 @@ public class GreetingResource {
         JsonObject responseJson = Json.createObjectBuilder()
                                      .add("message", "Hello " + name)
                                      .build();
-        return Response.ok(responseJson)
-                       .header("Access-Control-Allow-Origin", "*")
-                       .header("Access-Control-Allow-Credentials", "true")
-                       .header("Access-Control-Allow-Methods", "POST, GET, PATCH, DELETE, OPTIONS")
-                       .header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
-                       .header("Vary", "Origin")
-                       .build();
+        return Response.ok(responseJson).build();
     }
 }
