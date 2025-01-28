@@ -17,7 +17,7 @@ import java.util.List;
 @WebFilter("/*")
 public class CORSFilter implements Filter {
 
-    private static final List<String> ALLOWED_ORIGINS = Arrays.asList("http://localhost:5173", "http://127.0.0.1:5173", "http://192.168.5.213:8080");
+    private static final List<String> ALLOWED_ORIGINS = Arrays.asList("http://localhost:5173", "http://127.0.0.1:5173", "http://192.168.5.213:8080","https://polar-crag-35639-b43d5e9f6815.herokuapp.com/");
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
