@@ -12,6 +12,7 @@ import jakarta.ws.rs.client.ClientBuilder;
 import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.core.Response.Status;
+import jakarta.ws.rs.core.MultivaluedMap;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -26,10 +27,11 @@ public class CORSProxyResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response proxyGet(@jakarta.ws.rs.PathParam("path") String path, @jakarta.ws.rs.core.Context HttpHeaders headers) {
         try {
-            URI targetUri = new URI("http://target-server.com/" + path);
+            URI targetUri = new URI("https://polar-crag-35639-b43d5e9f6815.herokuapp.com/" + path);
+            MultivaluedMap<String, Object> requestHeaders = (MultivaluedMap<String, Object>) (MultivaluedMap) headers.getRequestHeaders();
             Response targetResponse = client.target(targetUri)
                                             .request()
-                                            .headers(headers.getRequestHeaders())
+                                            .headers(requestHeaders)
                                             .get();
 
             return buildResponse(targetResponse);
@@ -44,10 +46,11 @@ public class CORSProxyResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response proxyPost(@jakarta.ws.rs.PathParam("path") String path, String body, @jakarta.ws.rs.core.Context HttpHeaders headers) {
         try {
-            URI targetUri = new URI("http://target-server.com/" + path);
+            URI targetUri = new URI("https://polar-crag-35639-b43d5e9f6815.herokuapp.com/" + path);
+            MultivaluedMap<String, Object> requestHeaders = (MultivaluedMap<String, Object>) (MultivaluedMap) headers.getRequestHeaders();
             Response targetResponse = client.target(targetUri)
                                             .request()
-                                            .headers(headers.getRequestHeaders())
+                                            .headers(requestHeaders)
                                             .post(Entity.json(body));
 
             return buildResponse(targetResponse);

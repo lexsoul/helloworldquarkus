@@ -15,7 +15,6 @@ class GreetingResourceTest {
           .when().get("/hello")
           .then()
              .statusCode(200)
-             .header("Access-Control-Allow-Origin", "*")
              .body(is("Hello from Quarkus REST"));
     }
 
@@ -27,7 +26,6 @@ class GreetingResourceTest {
           .when().post("/hellomessage")
           .then()
              .statusCode(200)
-             .header("Access-Control-Allow-Origin", "*")
              .body("message", is("Hello Johnaa"));
     }
 }
