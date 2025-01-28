@@ -12,7 +12,7 @@ You can run your application in dev mode that enables live coding using:
 ./mvnw quarkus:dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+> **_NOTE:_** Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8081/q/dev/>.
 
 ## Packaging and running the application
 
@@ -52,6 +52,16 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 You can then execute your native executable with: `./target/getting-started-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+
+## Running the application
+
+To run the application, use the following command:
+
+```shell script
+java -jar target/quarkus-app/quarkus-run.jar
+```
+
+The application will be available at <http://localhost:8081>.
 
 ## Related Guides
 
