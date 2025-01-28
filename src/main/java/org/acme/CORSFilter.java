@@ -42,7 +42,11 @@ public class CORSFilter implements Filter {
         httpResponse.setHeader("Vary", "Origin");
 
         if ("OPTIONS".equalsIgnoreCase(httpRequest.getMethod())) {
-            httpResponse.setHeader("Access-Control-Allow-Origin", origin);
+            if (ALLOWED_ORIGINS.contains(origin)) {
+                httpResponse.setHeader("Access-Control-Allow-Origin", origin);
+            } else {
+                httpResponse.setHeader("Access-Control-Allow-Origin", "*");
+            }
             httpResponse.setHeader("Access-Control-Allow-Credentials", "true");
             httpResponse.setHeader("Access-Control-Allow-Methods", "POST, GET, PATCH, DELETE, OPTIONS");
             httpResponse.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
